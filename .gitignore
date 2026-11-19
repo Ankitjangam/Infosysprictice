@@ -1,0 +1,22 @@
+# Java Bytecode
+*.class
+
+# IDE and Project Files
+.idea/
+*.iml
+.vscode/
+out/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# OS generated
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Logs
+*.log
+rictice/
+untitled/
