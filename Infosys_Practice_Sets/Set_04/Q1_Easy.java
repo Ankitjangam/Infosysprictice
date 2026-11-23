@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 04 | QUESTION 1 &bull; Easy (12 Cases)
- * Q1 (Easy – 12 Cases): Circular Telemetry Pointer (Floyd's Cycle Start Node)
+ * Q1 (Easy - 12 Cases): Circular Telemetry Pointer (Floyd's Cycle Start Node)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Easy.java
- *       java Q1_Easy
+ *       java -cp . Q1_Easy
  * =============================================================================
  */
 
@@ -42,30 +42,45 @@ public class Q1_Easy {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
-    public static ListNode solveQ1(ListNode head) {
+public static ListNode solveQ1(ListNode head) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return null;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 04 - QUESTION 1");
-        System.out.println("Q1 (Easy – 12 Cases): Circular Telemetry Pointer (Floyd's Cycle Start Node)");
+        System.out.println("Q1 (Easy - 12 Cases): Circular Telemetry Pointer (Floyd's Cycle Start Node)");
         System.out.println("==================================================");
+        int passed = 0, total = 0;
+        total++;
+        ListNode n1 = new ListNode(3); ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(0); ListNode n4 = new ListNode(-4);
+        n1.next = n2; n2.next = n3; n3.next = n4; n4.next = n2;
+        ListNode got1 = solveQ1(n1);
+        boolean p1 = (got1 != null && got1.val == 2); if (p1) passed++;
+        System.out.println("[TEST 1] List: [3 -> 2 -> 0 -> -4 -> (node 2)]");
+        System.out.println("         Expected: Node 2 | Got: " + (got1 != null ? got1.val : "null"));
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

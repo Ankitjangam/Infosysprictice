@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 15 | QUESTION 1 &bull; Easy (12 Cases)
- * Q1 (Easy – 12 Cases): Data Feed Intersection (Intersection of Two Linked Lists)
+ * Q1 (Easy - 12 Cases): Data Feed Intersection (Intersection of Two Linked Lists)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Easy.java
- *       java Q1_Easy
+ *       java -cp . Q1_Easy
  * =============================================================================
  */
 
@@ -42,31 +42,57 @@ public class Q1_Easy {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static ListNode solveQ1(ListNode a, ListNode b) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return null;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 15 - QUESTION 1");
-        System.out.println("Q1 (Easy – 12 Cases): Data Feed Intersection (Intersection of Two Linked Lists)");
+        System.out.println("Q1 (Easy - 12 Cases): Data Feed Intersection (Intersection of Two Linked Lists)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        ListNode comm = new ListNode(8); comm.next = new ListNode(4); comm.next.next = new ListNode(5);
+        ListNode l1 = new ListNode(4); l1.next = new ListNode(1); l1.next.next = comm;
+        ListNode l2 = new ListNode(5); l2.next = new ListNode(6); l2.next.next = new ListNode(1); l2.next.next.next = comm;
+        ListNode got = solveQ1(l1, l2);
+        boolean p1 = (got != null && got.val == 8); if (p1) passed++;
+        System.out.println("[TEST 1] Intersecting at node with value 8");
+        System.out.println("         Expected: Node 8 | Got: " + (got != null ? got.val : "null"));
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
+    }
+
+    private static ListNode buildList(int[] arr) {
+        if (arr == null || arr.length == 0) return null;
+        ListNode dummy = new ListNode(0), curr = dummy;
+        for (int x : arr) { curr.next = new ListNode(x); curr = curr.next; }
+        return dummy.next;
+    }
+    private static List<Integer> toList(ListNode head) {
+        List<Integer> res = new ArrayList<>();
+        while (head != null) { res.add(head.val); head = head.next; }
+        return res;
     }
 
     // =========================================================================

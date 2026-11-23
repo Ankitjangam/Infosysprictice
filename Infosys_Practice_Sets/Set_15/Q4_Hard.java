@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 15 | QUESTION 4 &bull; Hard (12 Cases)
- * Q4 (Hard – 12 Cases): Dynamic Frequency Range Sum Engine (Fenwick Tree / BIT)
+ * Q4 (Hard - 12 Cases): Dynamic Frequency Range Sum Engine (Fenwick Tree / BIT)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q4_Hard.java
- *       java Q4_Hard
+ *       java -cp . Q4_Hard
  * =============================================================================
  */
 
@@ -34,30 +34,46 @@ import java.io.*;
 public class Q4_Hard {
 
     // =========================================================================
-    // TODO: IMPLEMENT YOUR OPTIMAL DATA STRUCTURE / SOLVER CLASS
-    // Strict practice: Write your members, constructors, and algorithms from scratch.
+    // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
-    class FenwickEngine {
-        // >>> WRITE YOUR FIELDS, CONSTRUCTORS & METHODS HERE <<<
-
+    public static class FenwickEngine {
+        // >>> WRITE YOUR FIELDS & CONSTRUCTORS HERE <<<
+        public FenwickEngine(int n) {}
+        public void update(int i, long delta) {}
+        public long query(int i) { return 0L; }
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 15 - QUESTION 4");
-        System.out.println("Q4 (Hard – 12 Cases): Dynamic Frequency Range Sum Engine (Fenwick Tree / BIT)");
+        System.out.println("Q4 (Hard - 12 Cases): Dynamic Frequency Range Sum Engine (Fenwick Tree / BIT)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        FenwickEngine bit = new FenwickEngine(5);
+        bit.update(1, 3); bit.update(2, 2); bit.update(3, 5);
+        long q = bit.query(2);
+        boolean p1 = (q == 5L); if (p1) passed++;
+        System.out.println("[TEST 1] Fenwick update(1,3), update(2,2), query(2)");
+        System.out.println("         Expected: 5 | Got: " + q);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

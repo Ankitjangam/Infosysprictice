@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q3_Hard_FenwickTreeRangeSum.java
- *       java Q3_Hard_FenwickTreeRangeSum
+ *       java -cp . Q3_Hard_FenwickTreeRangeSum
  * =============================================================================
  */
 
@@ -43,8 +43,20 @@ public class Q3_Hard_FenwickTreeRangeSum {
         return 0L;
     }
 
+    static long[] tree;
+    static int N;
+
+    public static void init(int n) {
+        N = n;
+        tree = new long[n + 1];
+    }
+
+    public static void update(int i, long delta) {
+        // >>> WRITE YOUR UPDATE LOGIC HERE <<<
+    }
+
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +64,33 @@ public class Q3_Hard_FenwickTreeRangeSum {
         System.out.println("PROBLEM: Fenwick Tree (Binary Indexed Tree) Range Sum [Hard]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  arr = [1, 3, 5], sumRange(0, 2) -> 9, update(1, 2), sumRange(0, 2) -> 8");
+        int passed = 0, total = 0;
+        total++;
+        init(5);
+        update(1, 3); update(2, 2); update(3, -1); update(4, 6); update(5, 5);
+        long q1 = query(3); // 3 + 2 - 1 = 4
+        long q2 = query(5); // 4 + 6 + 5 = 15
+        boolean allPass = (q1 == 4 && q2 == 15);
+        if (allPass) passed++;
+        System.out.println("[TEST 1] Fenwick Tree with values [3, 2, -1, 6, 5]");
+        System.out.println("         query(3) Exp: 4 | Got: " + q1);
+        System.out.println("         query(5) Exp: 15 | Got: " + q2);
+        System.out.println("         Verdict: " + (allPass ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

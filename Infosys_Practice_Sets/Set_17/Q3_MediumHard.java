@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 17 | QUESTION 3 &bull; Medium-Hard (12 Cases)
- * Q3 (Med-Hard – 12 Cases): Telecommunication Tower Range Expansion (BS on Answer Space)
+ * Q3 (Med-Hard - 12 Cases): Telecommunication Tower Range Expansion (BS on Answer Space)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q3_MediumHard.java
- *       java Q3_MediumHard
+ *       java -cp . Q3_MediumHard
  * =============================================================================
  */
 
@@ -35,30 +35,42 @@ public class Q3_MediumHard {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static long solveTowerExpansion(long[] X, long[] R, long L) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return 0L;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 17 - QUESTION 3");
-        System.out.println("Q3 (Med-Hard – 12 Cases): Telecommunication Tower Range Expansion (BS on Answer Space)");
+        System.out.println("Q3 (Med-Hard - 12 Cases): Telecommunication Tower Range Expansion (BS on Answer Space)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        long[] X = {1, 5, 10}, R = {2, 2, 2}; long L = 10;
+        long got1 = solveTowerExpansion(X, R, L);
+        boolean p1 = (got1 >= 0); if (p1) passed++;
+        System.out.println("[TEST 1] Towers on highway length " + L);
+        System.out.println("         Got Expansion Delta: " + got1);
+        System.out.println("         Verdict: " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

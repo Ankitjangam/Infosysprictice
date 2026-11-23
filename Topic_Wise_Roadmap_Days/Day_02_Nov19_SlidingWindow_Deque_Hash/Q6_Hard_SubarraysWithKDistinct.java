@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q6_Hard_SubarraysWithKDistinct.java
- *       java Q6_Hard_SubarraysWithKDistinct
+ *       java -cp . Q6_Hard_SubarraysWithKDistinct
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q6_Hard_SubarraysWithKDistinct {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,30 @@ public class Q6_Hard_SubarraysWithKDistinct {
         System.out.println("PROBLEM: Subarrays with Exactly K Distinct Integers [Hard]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  nums = [1, 2, 1, 2, 3], k = 2 | Expected: 7");
+        int passed = 0, total = 0;
+        total++;
+        int[] in1 = {1, 2, 1, 2, 3}; int k1 = 2; int exp1 = 7;
+        int got1 = subarraysWithKDistinct(in1, k1);
+        boolean p1 = (got1 == exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] In: " + Arrays.toString(in1) + ", k = " + k1);
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

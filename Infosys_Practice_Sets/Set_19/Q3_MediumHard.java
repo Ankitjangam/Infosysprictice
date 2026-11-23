@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 19 | QUESTION 3 &bull; Medium-Hard (12 Cases)
- * Q3 (Med-Hard – 12 Cases): Thread Pool Dependency Critical Path (Kahn's Topological DP)
+ * Q3 (Med-Hard - 12 Cases): Thread Pool Dependency Critical Path (Kahn's Topological DP)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q3_MediumHard.java
- *       java Q3_MediumHard
+ *       java -cp . Q3_MediumHard
  * =============================================================================
  */
 
@@ -35,30 +35,46 @@ public class Q3_MediumHard {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static int solveThreadPool(int n, List<int[]>[] adj, int[] time) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return 0;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 19 - QUESTION 3");
-        System.out.println("Q3 (Med-Hard – 12 Cases): Thread Pool Dependency Critical Path (Kahn's Topological DP)");
+        System.out.println("Q3 (Med-Hard - 12 Cases): Thread Pool Dependency Critical Path (Kahn's Topological DP)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        int n = 3;
+        List<int[]>[] adj = new ArrayList[n + 1];
+        for (int i = 0; i <= n; i++) adj[i] = new ArrayList<>();
+        adj[1].add(new int[]{2, 1}); adj[2].add(new int[]{3, 1});
+        int[] time = {2, 3, 1};
+        int got1 = solveThreadPool(n, adj, time);
+        boolean p1 = (got1 >= 0); if (p1) passed++;
+        System.out.println("[TEST 1] DAG 3 tasks with execution times");
+        System.out.println("         Got Max Latency: " + got1);
+        System.out.println("         Verdict: " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

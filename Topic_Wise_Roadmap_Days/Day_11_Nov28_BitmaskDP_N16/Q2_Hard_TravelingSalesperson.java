@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q2_Hard_TravelingSalesperson.java
- *       java Q2_Hard_TravelingSalesperson
+ *       java -cp . Q2_Hard_TravelingSalesperson
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q2_Hard_TravelingSalesperson {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,30 @@ public class Q2_Hard_TravelingSalesperson {
         System.out.println("PROBLEM: Traveling Salesperson Problem (TSP Bitmask DP) [Hard]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  dist = [[0, 10, 15, 20], [10, 0, 35, 25], [15, 35, 0, 30], [20, 25, 30, 0]] | Expected: 80");
+        int passed = 0, total = 0;
+        total++;
+        int[][] dist1 = {{0, 10, 15, 20}, {10, 0, 35, 25}, {15, 35, 0, 30}, {20, 25, 30, 0}}; int exp1 = 80;
+        int got1 = tsp(dist1, 4);
+        boolean p1 = (got1 == exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] dist = 4x4 matrix");
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

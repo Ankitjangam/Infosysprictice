@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Medium_SubarraySumEqualsK.java
- *       java Q1_Medium_SubarraySumEqualsK
+ *       java -cp . Q1_Medium_SubarraySumEqualsK
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q1_Medium_SubarraySumEqualsK {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,38 @@ public class Q1_Medium_SubarraySumEqualsK {
         System.out.println("PROBLEM: Subarray Sum Equals K [Medium]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  nums = [1, 1, 1], k = 2 | Expected: 2");
+        int passed = 0, total = 0;
+        total++;
+        int[] in1 = {1, 1, 1}; int k1 = 2; int exp1 = 2;
+        int got1 = subarraySum(in1, k1);
+        boolean p1 = (got1 == exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] In: " + Arrays.toString(in1) + ", k = " + k1);
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        total++;
+        int[] in2 = {1, 2, 3}; int k2 = 3; int exp2 = 2;
+        int got2 = subarraySum(in2, k2);
+        boolean p2 = (got2 == exp2);
+        if (p2) passed++;
+        System.out.println("[TEST 2] In: " + Arrays.toString(in2) + ", k = " + k2);
+        System.out.println("         Expected: " + exp2 + " | Got: " + got2);
+        System.out.println("         Verdict:  " + (p2 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

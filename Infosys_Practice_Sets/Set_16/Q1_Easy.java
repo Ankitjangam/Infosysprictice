@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 16 | QUESTION 1 &bull; Easy (12 Cases)
- * Q1 (Easy – 12 Cases): The Gym Workout Exhaustion (Official HackWithInfy Problem)
+ * Q1 (Easy - 12 Cases): The Gym Workout Exhaustion (Official HackWithInfy Problem)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Easy.java
- *       java Q1_Easy
+ *       java -cp . Q1_Easy
  * =============================================================================
  */
 
@@ -35,30 +35,42 @@ public class Q1_Easy {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity:  $O(N \log N)$ Time, $O(1)$ Space.
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static int solveGymWorkout(long E, int[] A) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
-        return 0;
+        return -1;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 16 - QUESTION 1");
-        System.out.println("Q1 (Easy – 12 Cases): The Gym Workout Exhaustion (Official HackWithInfy Problem)");
+        System.out.println("Q1 (Easy - 12 Cases): The Gym Workout Exhaustion (Official HackWithInfy Problem)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        long E = 15; int[] A = {2, 3, 5, 2}; int exp1 = 4;
+        int got1 = solveGymWorkout(E, A);
+        boolean p1 = (got1 == exp1); if (p1) passed++;
+        System.out.println("[TEST 1] E = " + E + ", A = " + Arrays.toString(A));
+        System.out.println("         Expected exercises: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:            " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  E = 15, A = [6, 2, 4] | Sample Output: 3 (Use 6 twice and 4 once → drains 16 ≥ 15)");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

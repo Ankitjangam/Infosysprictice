@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 02 | QUESTION 4 &bull; Hard (12 Cases)
- * Q4 (Hard – 12 Cases): Optical Network Routing Peak (Binary Tree Maximum Path Sum)
+ * Q4 (Hard - 12 Cases): Optical Network Routing Peak (Binary Tree Maximum Path Sum)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q4_Hard.java
- *       java Q4_Hard
+ *       java -cp . Q4_Hard
  * =============================================================================
  */
 
@@ -42,30 +42,46 @@ class TreeNode {
 public class Q4_Hard {
 
     // =========================================================================
-    // TODO: IMPLEMENT YOUR OPTIMAL DATA STRUCTURE / SOLVER CLASS
-    // Strict practice: Write your members, constructors, and algorithms from scratch.
+    // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
-    class TreeSolver {
-        // >>> WRITE YOUR FIELDS, CONSTRUCTORS & METHODS HERE <<<
-
+public static int solveQ4(TreeNode root) {
+        // >>> WRITE YOUR SOLUTION HERE <<<
+        return 0;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 02 - QUESTION 4");
-        System.out.println("Q4 (Hard – 12 Cases): Optical Network Routing Peak (Binary Tree Maximum Path Sum)");
+        System.out.println("Q4 (Hard - 12 Cases): Optical Network Routing Peak (Binary Tree Maximum Path Sum)");
         System.out.println("==================================================");
+        int passed = 0, total = 0;
+        total++;
+        TreeNode root = new TreeNode(-10);
+        root.left = new TreeNode(9); root.right = new TreeNode(20);
+        root.right.left = new TreeNode(15); root.right.right = new TreeNode(7);
+        int got1 = solveQ4(root); int exp1 = 42;
+        boolean p1 = (got1 == exp1); if (p1) passed++;
+        System.out.println("[TEST 1] Tree [-10, 9, 20, null, null, 15, 7]");
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  root = [-10,9,20,null,null,15,7] | Sample Output: 42");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

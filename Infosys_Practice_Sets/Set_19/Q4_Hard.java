@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 19 | QUESTION 4 &bull; Hard (12 Cases)
- * Q4 (Hard – 12 Cases): Cloud Cluster Consensus Token Ring (Bitmask DP N ≤ 16)
+ * Q4 (Hard - 12 Cases): Cloud Cluster Consensus Token Ring (Bitmask DP N ≤ 16)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q4_Hard.java
- *       java Q4_Hard
+ *       java -cp . Q4_Hard
  * =============================================================================
  */
 
@@ -35,30 +35,42 @@ public class Q4_Hard {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static int solveConsensusRing(int[][] cost) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return 0;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 19 - QUESTION 4");
-        System.out.println("Q4 (Hard – 12 Cases): Cloud Cluster Consensus Token Ring (Bitmask DP N ≤ 16)");
+        System.out.println("Q4 (Hard - 12 Cases): Cloud Cluster Consensus Token Ring (Bitmask DP N ≤ 16)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        int[][] cost = {{0, 10, 15, 20}, {10, 0, 35, 25}, {15, 35, 0, 30}, {20, 25, 30, 0}};
+        int got1 = solveConsensusRing(cost); int exp1 = 80;
+        boolean p1 = (got1 == exp1); if (p1) passed++;
+        System.out.println("[TEST 1] 4 nodes cost matrix");
+        System.out.println("         Expected TSP Tour: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:           " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

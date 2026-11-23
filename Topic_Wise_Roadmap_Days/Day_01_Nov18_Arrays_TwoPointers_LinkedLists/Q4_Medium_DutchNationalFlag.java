@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q4_Medium_DutchNationalFlag.java
- *       java Q4_Medium_DutchNationalFlag
+ *       java -cp . Q4_Medium_DutchNationalFlag
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q4_Medium_DutchNationalFlag {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,38 @@ public class Q4_Medium_DutchNationalFlag {
         System.out.println("PROBLEM: Dutch National Flag (Sort 0s, 1s, 2s) [Medium]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  nums = [2, 0, 2, 1, 1, 0] | Expected: [0, 0, 1, 1, 2, 2]");
+        int passed = 0, total = 0;
+        total++;
+        int[] in1 = {2, 0, 2, 1, 1, 0}; int[] exp1 = {0, 0, 1, 1, 2, 2};
+        sortColors(in1);
+        boolean p1 = Arrays.equals(in1, exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] In: [2, 0, 2, 1, 1, 0]");
+        System.out.println("         Expected: " + Arrays.toString(exp1) + " | Got: " + Arrays.toString(in1));
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        total++;
+        int[] in2 = {2, 0, 1}; int[] exp2 = {0, 1, 2};
+        sortColors(in2);
+        boolean p2 = Arrays.equals(in2, exp2);
+        if (p2) passed++;
+        System.out.println("[TEST 2] In: [2, 0, 1]");
+        System.out.println("         Expected: " + Arrays.toString(exp2) + " | Got: " + Arrays.toString(in2));
+        System.out.println("         Verdict:  " + (p2 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

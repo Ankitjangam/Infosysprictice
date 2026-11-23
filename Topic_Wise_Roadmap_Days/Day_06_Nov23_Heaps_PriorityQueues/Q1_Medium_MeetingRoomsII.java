@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Medium_MeetingRoomsII.java
- *       java Q1_Medium_MeetingRoomsII
+ *       java -cp . Q1_Medium_MeetingRoomsII
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q1_Medium_MeetingRoomsII {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,38 @@ public class Q1_Medium_MeetingRoomsII {
         System.out.println("PROBLEM: Meeting Rooms II (Min Conference Rooms) [Medium]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  intervals = [[0,30],[5,10],[15,20]] | Expected: 2");
+        int passed = 0, total = 0;
+        total++;
+        int[][] in1 = {{0, 30}, {5, 10}, {15, 20}}; int exp1 = 2;
+        int got1 = minMeetingRooms(in1);
+        boolean p1 = (got1 == exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] intervals = [[0,30],[5,10],[15,20]]");
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        total++;
+        int[][] in2 = {{7, 10}, {2, 4}}; int exp2 = 1;
+        int got2 = minMeetingRooms(in2);
+        boolean p2 = (got2 == exp2);
+        if (p2) passed++;
+        System.out.println("[TEST 2] intervals = [[7,10],[2,4]]");
+        System.out.println("         Expected: " + exp2 + " | Got: " + got2);
+        System.out.println("         Verdict:  " + (p2 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

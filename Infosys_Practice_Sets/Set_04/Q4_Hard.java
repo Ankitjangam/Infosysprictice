@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 04 | QUESTION 4 &bull; Hard (12 Cases)
- * Q4 (Hard – 12 Cases): Power Transmission Cycle Break (Redundant Connection DSU)
+ * Q4 (Hard - 12 Cases): Power Transmission Cycle Break (Redundant Connection DSU)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q4_Hard.java
- *       java Q4_Hard
+ *       java -cp . Q4_Hard
  * =============================================================================
  */
 
@@ -35,30 +35,43 @@ public class Q4_Hard {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
-    public static int[] solveQ4(int[][] edges) {
+public static int[] solveQ4(int[][] edges) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return new int[0];
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 04 - QUESTION 4");
-        System.out.println("Q4 (Hard – 12 Cases): Power Transmission Cycle Break (Redundant Connection DSU)");
+        System.out.println("Q4 (Hard - 12 Cases): Power Transmission Cycle Break (Redundant Connection DSU)");
         System.out.println("==================================================");
+        int passed = 0, total = 0;
+        total++;
+        int[][] in1 = {{1, 2}, {1, 3}, {2, 3}}; int[] exp1 = {2, 3};
+        int[] got1 = solveQ4(in1);
+        boolean p1 = Arrays.equals(got1, exp1); if (p1) passed++;
+        System.out.println("[TEST 1] edges = [[1,2],[1,3],[2,3]]");
+        System.out.println("         Expected: " + Arrays.toString(exp1) + " | Got: " + Arrays.toString(got1));
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

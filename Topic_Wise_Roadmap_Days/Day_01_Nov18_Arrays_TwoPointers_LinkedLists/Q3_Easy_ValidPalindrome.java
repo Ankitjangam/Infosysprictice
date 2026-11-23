@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q3_Easy_ValidPalindrome.java
- *       java Q3_Easy_ValidPalindrome
+ *       java -cp . Q3_Easy_ValidPalindrome
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q3_Easy_ValidPalindrome {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,38 @@ public class Q3_Easy_ValidPalindrome {
         System.out.println("PROBLEM: Valid Alphanumeric Palindrome [Easy]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  s = \"A man, a plan, a canal: Panama\" | Expected: true");
+        int passed = 0, total = 0;
+        total++;
+        String s1 = "A man, a plan, a canal: Panama"; boolean exp1 = true;
+        boolean got1 = isPalindrome(s1);
+        boolean p1 = (got1 == exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] In: \"" + s1 + "\"");
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        total++;
+        String s2 = "race a car"; boolean exp2 = false;
+        boolean got2 = isPalindrome(s2);
+        boolean p2 = (got2 == exp2);
+        if (p2) passed++;
+        System.out.println("[TEST 2] In: \"" + s2 + "\"");
+        System.out.println("         Expected: " + exp2 + " | Got: " + got2);
+        System.out.println("         Verdict:  " + (p2 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

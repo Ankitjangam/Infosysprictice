@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q2_Medium_CoinChangeUnbounded.java
- *       java Q2_Medium_CoinChangeUnbounded
+ *       java -cp . Q2_Medium_CoinChangeUnbounded
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q2_Medium_CoinChangeUnbounded {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,38 @@ public class Q2_Medium_CoinChangeUnbounded {
         System.out.println("PROBLEM: Coin Change (Fewest Coins - Unbounded DP) [Medium]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  coins = [1, 2, 5], amount = 11 | Expected: 3");
+        int passed = 0, total = 0;
+        total++;
+        int[] coins1 = {1, 2, 5}; int amt1 = 11; int exp1 = 3;
+        int got1 = coinChange(coins1, amt1);
+        boolean p1 = (got1 == exp1);
+        if (p1) passed++;
+        System.out.println("[TEST 1] coins = " + Arrays.toString(coins1) + ", amount = " + amt1);
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        total++;
+        int[] coins2 = {2}; int amt2 = 3; int exp2 = -1;
+        int got2 = coinChange(coins2, amt2);
+        boolean p2 = (got2 == exp2);
+        if (p2) passed++;
+        System.out.println("[TEST 2] coins = " + Arrays.toString(coins2) + ", amount = " + amt2);
+        System.out.println("         Expected: " + exp2 + " | Got: " + got2);
+        System.out.println("         Verdict:  " + (p2 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

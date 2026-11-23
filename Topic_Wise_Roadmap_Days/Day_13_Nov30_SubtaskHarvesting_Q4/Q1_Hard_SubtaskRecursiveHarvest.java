@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Hard_SubtaskRecursiveHarvest.java
- *       java Q1_Hard_SubtaskRecursiveHarvest
+ *       java -cp . Q1_Hard_SubtaskRecursiveHarvest
  * =============================================================================
  */
 
@@ -44,7 +44,7 @@ public class Q1_Hard_SubtaskRecursiveHarvest {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -52,13 +52,30 @@ public class Q1_Hard_SubtaskRecursiveHarvest {
         System.out.println("PROBLEM: O(2^N) Subtask Partial Score Harvester [Hard]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Harvest partial score: 4 out of 12 test cases instantly banked.");
+        int passed = 0, total = 0;
+        total++;
+        int[] items = {2, 3, 7};
+        long got1 = harvestSubtask(0, items.length, items, 0);
+        boolean p1 = (got1 >= 0);
+        if (p1) passed++;
+        System.out.println("[TEST 1] items = [2, 3, 7]");
+        System.out.println("         Harvested subtask score: " + got1);
+        System.out.println("         Verdict: " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

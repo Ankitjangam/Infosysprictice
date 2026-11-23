@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 16 | QUESTION 2 &bull; Easy-Medium (12 Cases)
- * Q2 (Easy-Med – 12 Cases): The Beautiful Function Number Cycle (Official Infosys InfyTQ)
+ * Q2 (Easy-Med - 12 Cases): The Beautiful Function Number Cycle (Official Infosys InfyTQ)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q2_Medium.java
- *       java Q2_Medium
+ *       java -cp . Q2_Medium
  * =============================================================================
  */
 
@@ -35,30 +35,42 @@ public class Q2_Medium {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity:  $O(\log N)$ Time, $O(\log N)$ Space.
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static int solveBeautifulFunction(long n) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return 0;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 16 - QUESTION 2");
-        System.out.println("Q2 (Easy-Med – 12 Cases): The Beautiful Function Number Cycle (Official Infosys InfyTQ)");
+        System.out.println("Q2 (Easy-Med - 12 Cases): The Beautiful Function Number Cycle (Official Infosys InfyTQ)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        long n = 10; int exp1 = 9;
+        int got1 = solveBeautifulFunction(n);
+        boolean p1 = (got1 == exp1); if (p1) passed++;
+        System.out.println("[TEST 1] n = " + n);
+        System.out.println("         Expected unique numbers: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:                 " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  N = 1098 | Sample Output: 20");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

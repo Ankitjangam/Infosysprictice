@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q6_Medium_FloydsCycleDetection.java
- *       java Q6_Medium_FloydsCycleDetection
+ *       java -cp . Q6_Medium_FloydsCycleDetection
  * =============================================================================
  */
 
@@ -51,7 +51,7 @@ public class Q6_Medium_FloydsCycleDetection {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -59,14 +59,53 @@ public class Q6_Medium_FloydsCycleDetection {
         System.out.println("PROBLEM: Floyd's Cycle Start Node [Medium]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  head = [3, 2, 0, -4] (pos = 1) | Expected: Node with value 2");
+        int passed = 0, total = 0;
+        total++;
+        ListNode n1 = new ListNode(3); ListNode n2 = new ListNode(2);
+        ListNode n3 = new ListNode(0); ListNode n4 = new ListNode(-4);
+        n1.next = n2; n2.next = n3; n3.next = n4; n4.next = n2;
+        ListNode got1 = detectCycle(n1);
+        boolean p1 = (got1 != null && got1.val == 2);
+        if (p1) passed++;
+        System.out.println("[TEST 1] List: [3 -> 2 -> 0 -> -4 -> (node 2)]");
+        System.out.println("         Expected Node: 2 | Got: " + (got1 != null ? got1.val : "null"));
+        System.out.println("         Verdict:       " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        total++;
+        ListNode a = new ListNode(1);
+        ListNode got2 = detectCycle(a);
+        boolean p2 = (got2 == null);
+        if (p2) passed++;
+        System.out.println("[TEST 2] List: [1] (No cycle)");
+        System.out.println("         Expected Node: null | Got: " + (got2 != null ? got2.val : "null"));
+        System.out.println("         Verdict:       " + (p2 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
+    }
+
+    private static ListNode buildList(int[] arr) {
+        if (arr == null || arr.length == 0) return null;
+        ListNode dummy = new ListNode(0), curr = dummy;
+        for (int x : arr) { curr.next = new ListNode(x); curr = curr.next; }
+        return dummy.next;
+    }
+    private static List<Integer> toList(ListNode head) {
+        List<Integer> res = new ArrayList<>();
+        while (head != null) { res.add(head.val); head = head.next; }
+        return res;
     }
 
     // =========================================================================

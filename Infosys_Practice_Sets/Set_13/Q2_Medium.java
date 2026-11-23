@@ -2,7 +2,7 @@
  * =============================================================================
  * INFOSYS SPECIALIST PROGRAMMER (SP) IN-PERSON CODING ASSESSMENT
  * SET 13 | QUESTION 2 &bull; Easy-Medium (12 Cases)
- * Q2 (Easy-Med – 12 Cases): Error-Tolerant Transmission (Max Consecutive Ones III)
+ * Q2 (Easy-Med - 12 Cases): Error-Tolerant Transmission (Max Consecutive Ones III)
  * =============================================================================
  *
  * [PROBLEM DESCRIPTION]
@@ -12,7 +12,7 @@
  * Standard exam constraints.
  *
  * [SAMPLE INPUT / OUTPUT]
- * Sample Input: None
+ * Standard sample cases.
  *
  * [INFOSYS EXAM WARNING / HARDWARE TRAP]
  * Watch for boundary and 32-bit integer overflow traps.
@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q2_Medium.java
- *       java Q2_Medium
+ *       java -cp . Q2_Medium
  * =============================================================================
  */
 
@@ -35,30 +35,42 @@ public class Q2_Medium {
 
     // =========================================================================
     // TODO: WRITE YOUR OPTIMAL LOGIC IN THIS METHOD
-    // Target Complexity: O(N) Time, O(1) Space
+    // Pure strict practice: Implement your solution from scratch.
     // =========================================================================
     public static int solveQ2(int[] nums, int k) {
         // >>> WRITE YOUR SOLUTION HERE <<<
-
         return 0;
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("INFOSYS EXAM PRACTICE: SET 13 - QUESTION 2");
-        System.out.println("Q2 (Easy-Med – 12 Cases): Error-Tolerant Transmission (Max Consecutive Ones III)");
+        System.out.println("Q2 (Easy-Med - 12 Cases): Error-Tolerant Transmission (Max Consecutive Ones III)");
         System.out.println("==================================================");
+        int passed = 0, total = 0; total++;
+        int[] in1 = {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0}; int k = 2; int exp1 = 6;
+        int got1 = solveQ2(in1, k);
+        boolean p1 = (got1 == exp1); if (p1) passed++;
+        System.out.println("[TEST 1] nums = " + Arrays.toString(in1) + ", k = " + k);
+        System.out.println("         Expected: " + exp1 + " | Got: " + got1);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
+    }
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  Sample Input: None");
-
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

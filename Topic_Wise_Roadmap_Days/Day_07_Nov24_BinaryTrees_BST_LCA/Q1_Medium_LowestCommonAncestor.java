@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q1_Medium_LowestCommonAncestor.java
- *       java Q1_Medium_LowestCommonAncestor
+ *       java -cp . Q1_Medium_LowestCommonAncestor
  * =============================================================================
  */
 
@@ -52,7 +52,7 @@ public class Q1_Medium_LowestCommonAncestor {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -60,13 +60,34 @@ public class Q1_Medium_LowestCommonAncestor {
         System.out.println("PROBLEM: Lowest Common Ancestor in Binary Tree [Medium]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1 | Expected: Node 3");
+        int passed = 0, total = 0;
+        total++;
+        TreeNode root = new TreeNode(3);
+        root.left = new TreeNode(5); root.right = new TreeNode(1);
+        root.left.left = new TreeNode(6); root.left.right = new TreeNode(2);
+        TreeNode p = root.left; // 5
+        TreeNode q = root.right; // 1
+        TreeNode got = lowestCommonAncestor(root, p, q);
+        boolean p1 = (got != null && got.val == 3);
+        if (p1) passed++;
+        System.out.println("[TEST 1] Tree root = 3, p = 5, q = 1");
+        System.out.println("         Expected LCA: 3 | Got: " + (got != null ? got.val : "null"));
+        System.out.println("         Verdict:      " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
     }
 

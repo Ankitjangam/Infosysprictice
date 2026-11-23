@@ -23,7 +23,7 @@
  * 2. Save the file.
  * 3. Open Command Prompt in this folder and compile & run:
  *       javac Q3_Hard_MergeKSortedLists.java
- *       java Q3_Hard_MergeKSortedLists
+ *       java -cp . Q3_Hard_MergeKSortedLists
  * =============================================================================
  */
 
@@ -51,7 +51,7 @@ public class Q3_Hard_MergeKSortedLists {
     }
 
     // =========================================================================
-    // BUILT-IN TEST RUNNER (Executes automatically when you run this file)
+    // BUILT-IN AUTOMATED TEST RUNNER (Calls your method and verifies verdict)
     // =========================================================================
     public static void main(String[] args) {
         System.out.println("==================================================");
@@ -59,14 +59,48 @@ public class Q3_Hard_MergeKSortedLists {
         System.out.println("PROBLEM: Merge K Sorted Lists via Min-Heap [Hard]");
         System.out.println("==================================================");
 
-        System.out.println("\n[SAMPLE DETAILS]");
-        System.out.println("  lists = [[1,4,5],[1,3,4],[2,6]] | Expected: [1, 1, 2, 3, 4, 4, 5, 6]");
+        int passed = 0, total = 0;
+        total++;
+        ListNode l1 = buildList(new int[]{1, 4, 5});
+        ListNode l2 = buildList(new int[]{1, 3, 4});
+        ListNode l3 = buildList(new int[]{2, 6});
+        ListNode got1 = mergeKLists(new ListNode[]{l1, l2, l3});
+        List<Integer> gotList = toList(got1);
+        List<Integer> expList = Arrays.asList(1, 1, 2, 3, 4, 4, 5, 6);
+        boolean p1 = Objects.equals(gotList, expList);
+        if (p1) passed++;
+        System.out.println("[TEST 1] lists = [[1,4,5],[1,3,4],[2,6]]");
+        System.out.println("         Expected: " + expList);
+        System.out.println("         Got:      " + gotList);
+        System.out.println("         Verdict:  " + (p1 ? ">> PASS <<" : "!! FAIL !!"));
+        printSummary(passed, total);
 
-        System.out.println("\n[INSTRUCTIONS]");
-        System.out.println("  1. Implement your logic in the empty method above.");
-        System.out.println("  2. Recompile and run to test your solution.");
-        System.out.println("  3. Target: 100% bug-free on all hidden edge cases.");
+    }
+
+    // =========================================================================
+    // TEST HELPER UTILITIES
+    // =========================================================================
+    private static void printSummary(int passed, int total) {
+        System.out.println("\n--------------------------------------------------");
+        System.out.println("RESULT: " + passed + " / " + total + " Test Cases Passed.");
+        if (passed == total) {
+            System.out.println("STATUS: [PASS] All automated test cases cleared!");
+        } else {
+            System.out.println("STATUS: [FAIL] Check your logic and re-test.");
+        }
         System.out.println("==================================================");
+    }
+
+    private static ListNode buildList(int[] arr) {
+        if (arr == null || arr.length == 0) return null;
+        ListNode dummy = new ListNode(0), curr = dummy;
+        for (int x : arr) { curr.next = new ListNode(x); curr = curr.next; }
+        return dummy.next;
+    }
+    private static List<Integer> toList(ListNode head) {
+        List<Integer> res = new ArrayList<>();
+        while (head != null) { res.add(head.val); head = head.next; }
+        return res;
     }
 
     // =========================================================================
