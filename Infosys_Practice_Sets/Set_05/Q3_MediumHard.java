@@ -87,6 +87,18 @@ public static ListNode solveQ3(ListNode[] lists) {
         System.out.println("==================================================");
     }
 
+    private static ListNode buildList(int[] arr) {
+        if (arr == null || arr.length == 0) return null;
+        ListNode dummy = new ListNode(0), curr = dummy;
+        for (int x : arr) { curr.next = new ListNode(x); curr = curr.next; }
+        return dummy.next;
+    }
+    private static List<Integer> toList(ListNode head) {
+        List<Integer> res = new ArrayList<>();
+        while (head != null) { res.add(head.val); head = head.next; }
+        return res;
+    }
+
     // =========================================================================
     // EXAM HALL FAST I/O PARSER (Available for reading inputs from System.in)
     // =========================================================================
