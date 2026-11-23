@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Definitive First-Principles Guide to DSA: From Memory Architecture to Infosys SP Assessment</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 10mm 10mm 10mm 10mm;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .page-break {
+                page-break-before: always;
+                break-before: page;
+            }
+            .card, table, .code-box {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #0f172a;
+            line-height: 1.45;
+            font-size: 8.5pt;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2, h3, h4 {
+            color: #0f172a;
+            margin-top: 0.7em;
+            margin-bottom: 0.25em;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 16pt;
+            text-align: center;
+            color: #1e3a8a;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 5px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 11.5pt;
+            color: #1e40af;
+            border-bottom: 1.5px solid #cbd5e1;
+            padding-bottom: 3px;
+            margin-top: 14px;
+        }
+        h3 {
+            font-size: 9.5pt;
+            color: #0369a1;
+            margin-top: 8px;
+            margin-bottom: 3px;
+        }
+        .subtitle {
+            text-align: center;
+            font-size: 9pt;
+            color: #475569;
+            margin-top: -3px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .badge-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background-color: #eff6ff;
+            color: #1d4ed8;
+            padding: 3px 8px;
+            border-radius: 9999px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            border: 1px solid #bfdbfe;
+        }
+        .card {
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            background-color: #f8fafc;
+        }
+        .card-title {
+            font-weight: bold;
+            color: #1e3a8a;
+            font-size: 9pt;
+            margin-bottom: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0 10px 0;
+            font-size: 8pt;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 5px 7px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f1f5f9;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        .code-box {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 7.8pt;
+            line-height: 1.35;
+            margin: 4px 0 8px 0;
+            white-space: pre-wrap;
+        }
+        .kw { color: #f43f5e; font-weight: bold; }
+        .type { color: #38bdf8; }
+        .func { color: #34d399; }
+        .comm { color: #94a3b8; font-style: italic; }
+        .num { color: #fbbf24; }
+        .str { color: #a3e635; }
+        .trap-box {
+            border-left: 4px solid #ef4444;
+            background-color: #fef2f2;
+            padding: 6px 10px;
+            margin: 6px 0;
+            font-size: 8pt;
+            color: #991b1b;
+        }
+        .highlight-box {
+            border-left: 4px solid #2563eb;
+            background-color: #eff6ff;
+            padding: 6px 10px;
+            margin: 6px 0;
+            font-size: 8pt;
+            color: #1e40af;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>The Definitive First-Principles Guide to DSA</h1>
+    <div class="subtitle">From Hardware Memory Architecture to Infosys Specialist Programmer (SP &bull; ₹9.5L &ndash; ₹13.5L+) Direct Gate</div>
+    <div class="badge-bar">
+        <span class="badge">First Principles</span>
+        <span class="badge">Linear vs Non-Linear</span>
+        <span class="badge">Hybrid Combinations</span>
+        <span class="badge">Infosys SP Q1-Q4 Blueprint</span>
+        <span class="badge">Guaranteed 38/48 Strategy</span>
+    </div>
+
+    <!-- CHAPTER 1 -->
+    <h2>Chapter 1: The Core Philosophy & Hardware Foundations</h2>
+    <div class="highlight-box">
+        <strong>The Truth:</strong> A Data Structure is simply how data is arranged in RAM. An Algorithm is simply the recipe to eliminate unnecessary CPU work. Every new data structure was invented to fix a physical flaw in the previous one.
+    </div>
+
+    <div class="card">
+        <div class="card-title">The Only Two Physical Layouts in RAM:</div>
+        <ul>
+            <li><strong>1. Contiguous (Array):</strong> Elements sit side-by-side. CPU uses instant math: <code>Address(i) = Base + i * Size</code> ($O(1)$ random access). High CPU cache hit rate. Downside: Fixed size, expensive $O(N)$ insertion/deletion in the middle.</li>
+            <li><strong>2. Scattered / Linked (Pointers):</strong> Elements sit anywhere free in RAM. Each node stores the memory address of the next. Downside: No random index access ($O(N)$ traversal), pointer memory overhead (8 bytes per pointer in 64-bit OS).</li>
+            <li><strong>The Big Secret:</strong> Every other structure (Stack, Queue, Tree, Heap, Graph, HashMap) is just an <em>Abstract Data Type (ADT)</em> &mdash; a set of behavioral rules enforced on top of an Array or Linked Nodes!</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="card-title">The Railway &amp; Ticket Booking (IRCTC) System Analogy:</div>
+        <table>
+            <tr><th>DSA Topic</th><th>Railway Real-World Equivalent</th><th>Hardware / System Problem It Solves</th></tr>
+            <tr><td><strong>Array</strong></td><td>Berths in a Coach (Seats 1 to 72)</td><td>Instant $O(1)$ lookup by seat number. Memory is contiguous.</td></tr>
+            <tr><td><strong>Linked List</strong></td><td>Train Bogies / Coaches hooked together</td><td>Add/remove coaches anywhere in $O(1)$ by changing couplers (pointers).</td></tr>
+            <tr><td><strong>Stack (LIFO)</strong></td><td>Pantry plates / Undo Ticket Booking</td><td>Last action is reversed first. Enforces single-door access.</td></tr>
+            <tr><td><strong>Queue (FIFO)</strong></td><td>Ticket Counter Waiting Line</td><td>First passenger to arrive is served first. Buffers requests.</td></tr>
+            <tr><td><strong>Priority Queue (Heap)</strong></td><td>Tatkal &amp; VIP Emergency Quota</td><td>Extreme values (highest priority) jump to root index in $O(\log N)$.</td></tr>
+            <tr><td><strong>HashMap</strong></td><td>PNR Number &rarr; Passenger Record</td><td>Hash function maps key directly to array bucket for $O(1)$ search.</td></tr>
+            <tr><td><strong>Trie</strong></td><td>Station Search Dropdown ("DEL" &rarr; "DELHI")</td><td>Prefix tree sharing common character branches in $O(\text{query length})$.</td></tr>
+            <tr><td><strong>Graph</strong></td><td>The Entire Rail Network of Tracks &amp; Junctions</td><td>Many-to-many connections with cycles and routes.</td></tr>
+            <tr><td><strong>BFS</strong></td><td>Fewest Station Stops Explorer</td><td>Explores level-by-level; guarantees shortest path in unweighted networks.</td></tr>
+            <tr><td><strong>Dijkstra</strong></td><td>Shortest Track Distance with Speed Limits</td><td>Greedy exploration of cheapest route using a Min-Heap.</td></tr>
+            <tr><td><strong>Dynamic Programming</strong></td><td>Train Schedule &amp; Coach Capacity Optimization</td><td>Avoids re-calculating identical decision subproblems using memory tables.</td></tr>
+        </table>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- CHAPTER 2 -->
+    <h2>Chapter 2: The Two Grand Domains &bull; Linear vs Non-Linear</h2>
+    <p>Every problem in computer science belongs to either the <strong>Linear Domain</strong> (1-to-1 sequential) or the <strong>Non-Linear Domain</strong> (branching &amp; networks).</p>
+
+    <div class="card">
+        <div class="card-title">Part 1: The Linear Playbook (Arrays, Strings, Linked Lists, Stacks, Queues)</div>
+        <table>
+            <tr><th>Pattern</th><th>Core Mechanism</th><th>When to Trigger in Exam</th></tr>
+            <tr><td><strong>Two Pointers (Inward Squeeze)</strong></td><td><code>left = 0, right = n - 1</code> moving towards center</td><td>Sorted array pair sum, Valid palindrome, Container with Most Water.</td></tr>
+            <tr><td><strong>Two Pointers (Fast &amp; Slow)</strong></td><td><code>fast</code> scans ahead, <code>slow</code> writes clean data</td><td>Remove duplicates in-place, Move Zeroes, In-place filtering ($O(1)$ space).</td></tr>
+            <tr><td><strong>Two Pointers (3-Way Partition)</strong></td><td><code>low, mid, high</code> partitioning into 3 sections</td><td>Dutch National Flag algorithm (Sort 0s, 1s, 2s).</td></tr>
+            <tr><td><strong>Sliding Window (Fixed $K$)</strong></td><td>Constant frame size $K$, slide forward by 1</td><td>Maximum sum subarray of exact size $K$.</td></tr>
+            <tr><td><strong>Sliding Window (Dynamic)</strong></td><td>Expand <code>right</code>, shrink <code>left</code> while condition broken</td><td>Longest substring without repeating characters, Min size subarray sum.</td></tr>
+            <tr><td><strong>Prefix &amp; Suffix Sum</strong></td><td>Precomputed cumulative sums: <code>prefix[i] = prefix[i-1] + arr[i]</code></td><td>Range sum queries $[L, R]$ in $O(1)$, Subarray sum equals $K$ (Prefix + Hash).</td></tr>
+            <tr><td><strong>Difference Array</strong></td><td>Add $+V$ at index $L$, subtract $-V$ at index $R+1$</td><td>Range updates across $Q$ queries in $O(1)$ per update.</td></tr>
+            <tr><td><strong>Kadane's Algorithm</strong></td><td><code>cur = Math.max(arr[i], cur + arr[i])</code></td><td>Maximum contiguous subarray sum in single $O(N)$ pass.</td></tr>
+            <tr><td><strong>Monotonic Stack</strong></td><td>Stack strictly maintaining increasing/decreasing elements</td><td>Next Greater Element, Previous Smaller Element, Daily Temperatures, Histogram.</td></tr>
+            <tr><td><strong>Binary Search (Classic &amp; Bounds)</strong></td><td>Eliminate 50% search space at <code>mid</code></td><td>Search in sorted array, Lower/Upper bound, Rotated sorted search.</td></tr>
+            <tr><td><strong>Linked List Cycle &amp; Reverse</strong></td><td>Floyd's Tortoise &amp; Hare (1-step, 2-step); <code>prev, curr, next</code></td><td>Detect cycle, Find middle node, Reverse linked list in-place.</td></tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Part 2: The Non-Linear Playbook (Trees, Graphs, DSU, Heaps, DP)</div>
+        <table>
+            <tr><th>Pattern</th><th>Core Mechanism</th><th>When to Trigger in Exam</th></tr>
+            <tr><td><strong>Tree Divide &amp; Conquer</strong></td><td>Solve left subtree, solve right subtree, combine at root</td><td>Lowest Common Ancestor (LCA), Maximum Path Sum, Tree Diameter.</td></tr>
+            <tr><td><strong>BFS (Queue)</strong></td><td>Level-by-level neighborhood expansion</td><td>Unweighted shortest path, Minimum steps in 2D maze, Rotten Oranges.</td></tr>
+            <tr><td><strong>DFS &amp; Backtracking</strong></td><td>Plunge deep, backtrack on dead-end</td><td>Cycle detection, Connected components, Subsets, Permutations, Sudoku.</td></tr>
+            <tr><td><strong>Dijkstra's Algorithm</strong></td><td>Greedy expansion of minimum-cost node using Min-Heap</td><td>Shortest path in weighted graph with positive edge weights.</td></tr>
+            <tr><td><strong>Disjoint Set Union (DSU)</strong></td><td>Union by Rank + Path Compression in $O(\alpha(N))$</td><td>Network connectivity, Dynamic cycle detection, Kruskal's MST.</td></tr>
+            <tr><td><strong>0/1 Knapsack DP</strong></td><td>Decision tree: Pick or Skip element under capacity $W$</td><td>Equal load partitioning, Subset sum, Target sum.</td></tr>
+            <tr><td><strong>Bitmask DP ($N \le 18$)</strong></td><td>Integer bits represent visited subset of nodes</td><td>Traveling Salesperson Problem (TSP), Optimal worker-task assignment.</td></tr>
+        </table>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- CHAPTER 3 -->
+    <h2>Chapter 3: The 7 Master Hybrid Combinations (Linear + Non-Linear Matched)</h2>
+    <div class="highlight-box">
+        <strong>The Secret of Medium-Hard Exam Questions:</strong> The most prestigious questions (Question 3 &amp; 4 in Infosys SP) are created by gluing a Linear concept with a Non-Linear concept!
+    </div>
+
+    <div class="card">
+        <table>
+            <tr><th>Hybrid Name</th><th>Linear Component</th><th>Non-Linear Component</th><th>Real Exam Problem</th></tr>
+            <tr><td><strong>1. Binary Search on Answer Space</strong></td><td>Search space $[1 \dots 10^9]$ (Sorted array)</td><td>Greedy monotonic validator function</td><td>Ship Packages within $D$ Days, Koko Bananas, Aggressive Cows.</td></tr>
+            <tr><td><strong>2. 2D Grid Graph Traversal</strong></td><td>2D Matrix (Contiguous memory in RAM)</td><td>BFS / DFS Graph traversal (4 directions)</td><td>Number of Islands, Epidemic Grid Containment, Word Search.</td></tr>
+            <tr><td><strong>3. Interval Scheduling + Min-Heap</strong></td><td>Sorted array of intervals (Linear)</td><td>Priority Queue tracking release times</td><td>Meeting Rooms II, Task Scheduler, Merge $K$ Sorted Lists.</td></tr>
+            <tr><td><strong>4. Tree Dynamic Programming</strong></td><td>Recursion tree traversal (Non-Linear)</td><td>State caching across subtrees</td><td>Binary Tree Maximum Path Sum, House Robber III.</td></tr>
+            <tr><td><strong>5. LIS with Patience Sorting</strong></td><td>Flat Array of numbers (Linear)</td><td>Binary Search on active tails array</td><td>Longest Increasing Subsequence in $O(N \log N)$.</td></tr>
+            <tr><td><strong>6. Sliding Window + Deque/Heap</strong></td><td>Contiguous sliding window $[L, R]$</td><td>Monotonic Deque maintaining running extremes</td><td>Sliding Window Maximum in $O(N)$, Sliding Window Median.</td></tr>
+            <tr><td><strong>7. String Array + Trie Tree</strong></td><td>Dictionary of strings / numbers</td><td>Trie tree with 26 child pointers or XOR bits</td><td>Word Break II, Maximum XOR Pair of Two Numbers.</td></tr>
+        </table>
+    </div>
+
+    <!-- CHAPTER 4 -->
+    <h2>Chapter 4: The 3 Supporting Weapons (Hidden Test Case Protectors)</h2>
+    <div class="card">
+        <div class="card-title">1. Math &amp; Modulo Arithmetic ($10^9 + 7$):</div>
+        <p>In almost every Infosys SP question, numbers exceed 64-bit limits. Always use: <code>(A + B) % 1_000_000_007</code> and cast products to <code>(long)</code> before multiplying: <code>(int) (((long) a * b) % MOD)</code>.</p>
+        <p>Euclidean GCD in $O(\log(\min(A, B)))$: <code>long gcd(long a, long b) { return b == 0 ? a : gcd(b, a % b); }</code></p>
+    </div>
+
+    <div class="card">
+        <div class="card-title">2. Bitwise Magic Tricks:</div>
+        <ul>
+            <li><code>x & (x - 1)</code> &mdash; Instantly clears the lowest set bit (counts 1-bits in number).</li>
+            <li><code>x & (-x)</code> &mdash; Isolates the lowest set bit.</li>
+            <li><code>a ^ a = 0</code> &mdash; All duplicates cancel to 0; isolates single unique element in $O(N)$ time and $O(1)$ space.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="card-title">3. Advanced Range Trees (Segment Tree &amp; Fenwick Tree):</div>
+        <p>Solves problems where an array has BOTH rapid updates ($O(\log N)$) AND rapid range queries ($O(\log N)$) across $10^5$ operations. Prevents Time Limit Exceeded (TLE).</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- CHAPTER 5 -->
+    <h2>Chapter 5: Authentic Infosys SP Exam Blueprint (4 Questions &bull; 48 Cases)</h2>
+    <div class="highlight-box">
+        <strong>Scoring Thresholds:</strong> Total: 4 Questions &times; 12 Cases = 48 Hidden Cases.<br>
+        &bull; <strong>DSE Offer Cutoff:</strong> 16 &ndash; 24 Cases (Locked completely by Q1 + Q2 &bull; Pure Linear).<br>
+        &bull; <strong>Specialist Programmer (SP) Direct Gate:</strong> 34 &ndash; 38+ Cases (Top 1% in India).
+    </div>
+
+    <div class="card">
+        <table>
+            <tr><th>Exam Question</th><th>Domain</th><th>Exact Patterns Tested</th><th>Time Allocation &amp; Target</th></tr>
+            <tr>
+                <td><strong>Q1 (Easy &bull; 12 Cases)</strong></td>
+                <td><strong>100% LINEAR</strong></td>
+                <td>Two Pointers Inward Squeeze, Dutch National Flag, In-place Array Traversal, Fast I/O</td>
+                <td><strong>25 mins &bull; Bank 12 / 12</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Q2 (Medium &bull; 12 Cases)</strong></td>
+                <td><strong>90% LINEAR</strong></td>
+                <td>Sliding Window, Prefix Sum + Modulo, Monotonic Stack, HashSet Simulation</td>
+                <td><strong>35 mins &bull; Bank 12 / 12</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Q3 (Med-Hard &bull; 12 Cases)</strong></td>
+                <td><strong>HYBRID</strong></td>
+                <td>Binary Search on Answer Space, Min-Heap Scheduling, Graph DAG / DSU</td>
+                <td><strong>50 mins &bull; Bank 10-12 / 12</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Q4 (Hard &bull; 12 Cases)</strong></td>
+                <td><strong>100% NON-LINEAR</strong></td>
+                <td>0/1 Knapsack DP, 3D Grid BFS, Bitmask DP ($N \le 16$), Tree DFS Optimization</td>
+                <td><strong>30 mins &bull; Bank 4-6 / 12 (Subtask Harvest)</strong></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="card">
+        <div class="card-title">The Guaranteed 38 / 48 Score Strategy:</div>
+        <div class="code-box">Q1 (Linear Easy):         12 / 12 cases banked in 25 mins
+Q2 (Linear Medium):       12 / 12 cases banked in 35 mins  ──► 24/48 CASES BANKED (DSE OFFER LOCKED)
+Q3 (Hybrid Med-Hard):     10 / 12 cases banked in 50 mins  ──► 34/48 CASES BANKED (SP GATE UNLOCKED)
+Q4 (Subtask Harvesting):   4 / 12 cases banked in 30 mins  ──► 38/48 CASES BANKED (TOP 1% IN INDIA)
+────────────────────────────────────────────────────────────────────────────────────────────────
+TOTAL SCORE:             38 / 48 HIDDEN TEST CASES PASSED (SPECIALIST PROGRAMMER ₹9.5L - ₹13.5L+)</div>
+    </div>
+
+    <!-- CHAPTER 6 -->
+    <h2>Chapter 6: Complete 19-Topic Master Study Checklist</h2>
+    <table>
+        <tr><th>#</th><th>Topic Name</th><th>Category</th><th>Primary Exam Trigger / Problem Clue</th><th>Key Practice Problem</th></tr>
+        <tr><td>1</td><td>Two Pointers Inward Squeeze</td><td>Linear</td><td>"Sorted array, find pair matching sum..."</td><td>Two Sum II (Sorted)</td></tr>
+        <tr><td>2</td><td>Two Pointers Fast-Slow</td><td>Linear</td><td>"In-place modification without extra memory..."</td><td>Remove Duplicates, Move Zeroes</td></tr>
+        <tr><td>3</td><td>Dutch National Flag (3-Way)</td><td>Linear</td><td>"Partition elements into 3 groups..."</td><td>Sort Colors (0s, 1s, 2s)</td></tr>
+        <tr><td>4</td><td>Fixed Sliding Window</td><td>Linear</td><td>"Subarray of exact size K..."</td><td>Max Sum Subarray of Size K</td></tr>
+        <tr><td>5</td><td>Dynamic Sliding Window</td><td>Linear</td><td>"Longest / shortest contiguous substring..."</td><td>Longest Substring Without Repeating</td></tr>
+        <tr><td>6</td><td>Prefix Sum &amp; Hash</td><td>Linear</td><td>"Count subarrays whose sum equals K..."</td><td>Subarray Sum Equals K</td></tr>
+        <tr><td>7</td><td>Difference Array</td><td>Linear</td><td>"Increment range [L, R] across M operations..."</td><td>Corporate Flight Bookings</td></tr>
+        <tr><td>8</td><td>Kadane's Algorithm</td><td>Linear</td><td>"Maximum contiguous subarray sum..."</td><td>Maximum Subarray</td></tr>
+        <tr><td>9</td><td>Monotonic Stack</td><td>Linear</td><td>"Next greater / previous smaller element..."</td><td>Daily Temperatures, Largest Rectangle</td></tr>
+        <tr><td>10</td><td>Binary Search on Array</td><td>Linear</td><td>"Search in rotated sorted array..."</td><td>Search in Rotated Sorted Array</td></tr>
+        <tr><td>11</td><td>Linked List Cycle &amp; Reverse</td><td>Linear</td><td>"Detect cycle, reverse in K-groups..."</td><td>Linked List Cycle II, Reverse K-Group</td></tr>
+        <tr><td>12</td><td>Binary Search on Answer</td><td>Hybrid</td><td>"Minimize maximum capacity / speed..."</td><td>Ship Packages in D Days, Koko Bananas</td></tr>
+        <tr><td>13</td><td>Intervals + Min-Heap</td><td>Hybrid</td><td>"Find minimum conference rooms needed..."</td><td>Meeting Rooms II</td></tr>
+        <tr><td>14</td><td>2D Grid BFS / DFS</td><td>Hybrid</td><td>"Count connected islands / shortest path in maze..."</td><td>Number of Islands, Rotten Oranges</td></tr>
+        <tr><td>15</td><td>Binary Tree Traversals &amp; LCA</td><td>Non-Linear</td><td>"Lowest common ancestor, tree max path..."</td><td>Lowest Common Ancestor, Tree Max Path Sum</td></tr>
+        <tr><td>16</td><td>Graph Topological Sort &amp; DSU</td><td>Non-Linear</td><td>"Course prerequisites, dynamic cycle detection..."</td><td>Course Schedule II, Redundant Connection</td></tr>
+        <tr><td>17</td><td>Dijkstra's Shortest Path</td><td>Non-Linear</td><td>"Shortest travel time with edge weights..."</td><td>Network Delay Time</td></tr>
+        <tr><td>18</td><td>0/1 Knapsack Dynamic Prog.</td><td>Non-Linear</td><td>"Partition equal subsets, maximize value with capacity..."</td><td>Partition Equal Subset Sum, Coin Change</td></tr>
+        <tr><td>19</td><td>Bitmask DP ($N \le 18$)</td><td>Non-Linear</td><td>"Constraints show N &le; 16, visit all nodes..."</td><td>Traveling Salesperson, Shortest Path All Nodes</td></tr>
+    </table>
+
+</body>
+</html>
